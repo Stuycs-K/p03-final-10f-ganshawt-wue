@@ -63,3 +63,36 @@ int server_tcp_handshake(int listen_socket){
   //printf("Server accepted from client @ socket: %d\n", client_socket);
   return client_socket;
 }
+
+int client_tcp_handshake(char * server_address) {
+  struct addrinfo *hints, *results;
+  hints = calloc(1, sizeof(struct addrinfo));
+  hints->ai_family = AF_INET;
+  hints->ai_socktype = SOCK_STREAM;//TCP
+  //getaddrinfo
+  int getaddrinfo_result = getaddrinfo(server_address, PORT, hints, &results);
+  if (getaddrinfo_result != 0) {
+    //printf("getaddrinfo() error: %s\n", gai_strerror(getaddrinfo_result));
+    exit(1);
+  }
+  //printf("Client getaddrinfo successful\n");
+  int serverd;//store the socket descriptor here
+  //create the socket
+  serverd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
+  if (serverd < 0) {
+    //printf("socket() error: %s\n", strerror(errno));
+    exit(1);
+  }
+  //printf("Client socket created: %d\n", serverd);
+  //connect() to the server
+  int connect_result = connect(serverd, results->ai_addr, results->ai_addrlen);
+  if (connect_result < 0) {
+    //printf("connect() error: %s\n", strerror(errno));
+    exit(1);
+  }
+  //printf("Client connected to server %s:10101\n", server_address);
+  //free the structs used by getaddrinfo
+  free(hints);
+  freeaddrinfo(results);
+  return serverd;
+}
