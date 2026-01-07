@@ -15,6 +15,6 @@
 #ifndef QUESTIONCREATION_H
   #define QUESTIONCREATION_H
   int questioncreation(char ** answers);
-
+  int isIn(char ** arr, char * str);
 
 #endif

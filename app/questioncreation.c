@@ -2,13 +2,13 @@
 
 char * types[18] = {"fire", "water", "grass", "electric", "ghost", "poison", "ice", "dragon", "bug", "normal", "fighting", "flying", "ground", "rock", "psychic", "dark", "steel", "fairy"};
 char * stat_types[6] = {"hp", "attack", "defense", "special attack", "special defense", "speed"};
-char * qtypes[12] = {"name", "gen", "height", "weight", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
+char * qtypes[12] = {"name", "gen", "height (dm)", "weight (dg)", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
 
 int main(){
   char * answers[4];
   for(int i = 0; i < 4; i++)
   {
-    answers[i] = malloc(15);
+    answers[i] = calloc(15, 1);
   }
   int ans = questioncreation(answers);
   printf("Ans Pos: %d\n", ans);
@@ -72,18 +72,20 @@ int questioncreation(char ** answers){
       for(int i = 1; i < 4; i++)
       {
         int temp_gen = generation;
-        if(i == 1){temp_gen -= 1;}
-        if(i == 2){temp_gen += 1;}
-        if(i == 3){temp_gen += 2;}
-        if(temp_gen < 1){temp_gen += 9;}
-        if(temp_gen > 9){temp_gen -= 9;}
+        char temp_str[15];
+        sprintf(temp_str, "%d", temp_gen);
+        while(temp_gen == generation || isIn(answers,temp_str))
+        {
+          temp_gen = (rand() % 9) + 1;
+          sprintf(temp_str, "%d", temp_gen);
+        }
 
         int index = i + ans_position;
         if(index < 0){index += 4;}
         if(index > 3){index -= 4;}
       //  printf("%d, %d\n", temp_gen, index);
-        char temp_str[15];
-        sprintf(temp_str, "%d", temp_gen);
+
+
       //  printf("%s\n",temp_str);
       //  answers[index] = NULL;
         strcpy(answers[index],temp_str);
@@ -94,8 +96,40 @@ int questioncreation(char ** answers){
     case 2: case 3:
       int real_val;
       sscanf(qdata[rand_qtype], "%d", &real_val);
-      answers[ans_position] = qdata[rand_qtype];
+      // printf("%s-\n", double_str);
+      strcpy(answers[ans_position],qdata[rand_qtype]);
+      // printf("%s--\n", answers[ans_position]);
 
+      for(int i = 1; i < 4; i++)
+      {
+        int temp_val = real_val;
+        char temp_str[15];
+        sprintf(temp_str, "%d", temp_val);
+        while(temp_val == real_val || isIn(answers,temp_str) || temp_val == 0)
+        {
+          double rand_offset = 0;
+          if( rand() % 2 == 0)
+          {
+            rand_offset = ((rand() % 20) + 65) / 100.0;
+          }
+          else
+          {
+            rand_offset = ((rand() % 20) + 15) / 100.0;
+          }
+
+          temp_val *= rand_offset;
+          if(temp_val == 0){temp_val += 1;}
+          if(real_val < 10){temp_val += rand() % 10;}
+          sprintf(temp_str, "%d", temp_val);
+        }
+        int index = i + ans_position;
+        if(index < 0){index += 4;}
+        if(index > 3){index -= 4;}
+
+      //  printf("%s\n",temp_str);
+
+        strcpy(answers[index],temp_str);
+      }
 
       break;
     case 4:
@@ -112,4 +146,18 @@ int questioncreation(char ** answers){
   }
 
   return ans_position;
+}
+
+int isIn(char ** arr, char * str)
+{
+  int i = 0;
+
+  int final = 0;
+  while(i < 4)
+  {
+    //printf("%s--\n", arr[i]);
+    if(strcmp(arr[i],str) == 0){final = 1;}
+    i++;
+  }
+  return final;
 }
