@@ -8,7 +8,7 @@ void sigint_handler(int sig) {
 void clientLogic(int server_socket){
   char buffer[BUFFER_SIZE];
   //Ask for string
-  //printf("Enter a string: ");
+  printf("I think it's ");
   if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
     //printf("\nClient exit\n");
     close(server_socket);
@@ -23,7 +23,6 @@ void clientLogic(int server_socket){
     return;
   }
   //printf("Client sent string to server: %s\n", buffer);
-  //Read rotX from server
   int bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
   if (bytes_read < 0) {
     //printf("read() error: %s\n", strerror(errno));
@@ -35,7 +34,6 @@ void clientLogic(int server_socket){
     //exit(0);
   }
   buffer[bytes_read] = '\0';
-  //printf("Client rotX received from server: %s\n", buffer);
 }
 
 int main(int argc, char *argv[] ) {

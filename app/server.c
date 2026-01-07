@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
   int listen_socket = server_setup();
   while (1) {
     while (waitpid(-1, NULL, WNOHANG) > 0);
-    //printf("Waiting for client\n");
+    printf("Waiting for client\n");
     int client_socket = server_tcp_handshake(listen_socket);
     //Fork subserver
     pid_t pid = fork();
