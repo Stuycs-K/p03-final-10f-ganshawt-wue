@@ -1,0 +1,1 @@
+deoxys-normal;3;17;608;psychic/psychic;50;150;50;150;50;150;270

@@ -1,0 +1,1 @@
+thundurus-incarnate;5;15;610;electric/flying;79;115;70;125;80;111;261

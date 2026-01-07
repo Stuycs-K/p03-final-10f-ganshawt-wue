@@ -1,0 +1,1 @@
+poliwrath;1;13;540;water/fighting;90;95;95;70;90;70;230

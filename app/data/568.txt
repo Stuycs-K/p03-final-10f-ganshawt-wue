@@ -1,0 +1,1 @@
+trubbish;5;6;310;poison/poison;50;50;62;40;62;65;66

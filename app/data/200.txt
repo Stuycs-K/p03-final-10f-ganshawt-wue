@@ -1,0 +1,1 @@
+misdreavus;2;7;10;ghost/ghost;60;60;60;85;85;85;87

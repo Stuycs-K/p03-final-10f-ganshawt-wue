@@ -1,0 +1,1 @@
+electrike;3;6;152;electric/electric;40;45;40;65;40;65;59

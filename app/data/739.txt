@@ -1,0 +1,1 @@
+crabrawler;7;6;70;fighting/fighting;47;82;57;42;47;63;68

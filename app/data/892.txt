@@ -1,0 +1,1 @@
+urshifu-single-strike;8;19;1050;fighting/dark;100;130;100;63;60;97;275

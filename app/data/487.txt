@@ -1,0 +1,1 @@
+giratina-altered;4;45;7500;ghost/dragon;150;100;120;100;120;90;306

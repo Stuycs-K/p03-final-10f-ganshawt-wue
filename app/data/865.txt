@@ -1,0 +1,1 @@
+sirfetchd;8;8;1170;fighting/fighting;62;135;95;68;82;65;177

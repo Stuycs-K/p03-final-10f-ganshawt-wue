@@ -1,0 +1,1 @@
+reuniclus;5;10;201;psychic/psychic;110;65;75;125;85;30;221

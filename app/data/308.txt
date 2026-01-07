@@ -1,0 +1,1 @@
+medicham;3;13;315;fighting/psychic;60;60;75;60;75;80;144

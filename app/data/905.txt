@@ -1,0 +1,1 @@
+enamorus-incarnate;8;16;480;fairy/flying;74;115;70;135;80;106;116

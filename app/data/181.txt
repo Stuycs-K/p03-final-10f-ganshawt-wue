@@ -1,0 +1,1 @@
+ampharos;2;14;615;electric/electric;90;75;85;115;90;55;230

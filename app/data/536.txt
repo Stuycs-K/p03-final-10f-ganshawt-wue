@@ -1,0 +1,1 @@
+palpitoad;5;8;170;water/ground;75;65;55;65;55;69;134

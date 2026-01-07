@@ -1,0 +1,1 @@
+stufful;7;5;68;normal/fighting;70;75;50;45;50;50;68

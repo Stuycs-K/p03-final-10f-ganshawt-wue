@@ -1,0 +1,1 @@
+dragonair;1;40;165;dragon/dragon;61;84;65;70;70;70;147

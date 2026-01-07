@@ -1,0 +1,1 @@
+mankey;1;5;280;fighting/fighting;40;80;35;35;45;70;61

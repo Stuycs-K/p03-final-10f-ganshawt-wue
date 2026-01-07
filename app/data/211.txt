@@ -1,0 +1,1 @@
+qwilfish;2;5;39;water/poison;65;95;85;55;55;85;88

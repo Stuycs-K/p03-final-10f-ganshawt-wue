@@ -1,0 +1,1 @@
+pikipek;7;3;12;normal/flying;35;75;30;30;30;65;53

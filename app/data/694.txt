@@ -1,0 +1,1 @@
+helioptile;6;5;60;electric/normal;44;38;33;61;43;70;58

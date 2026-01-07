@@ -1,0 +1,1 @@
+dracozolt;8;18;1900;electric/dragon;90;100;90;80;70;75;177

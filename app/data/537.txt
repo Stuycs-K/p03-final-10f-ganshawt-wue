@@ -1,0 +1,1 @@
+seismitoad;5;15;620;water/ground;105;95;75;85;75;74;229

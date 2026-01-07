@@ -1,0 +1,1 @@
+boltund;8;10;340;electric/electric;69;90;60;90;60;121;172

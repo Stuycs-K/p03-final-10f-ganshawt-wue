@@ -1,0 +1,1 @@
+pumpkaboo-average;6;4;50;ghost/grass;49;66;70;44;55;51;67

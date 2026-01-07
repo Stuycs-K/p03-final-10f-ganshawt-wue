@@ -1,0 +1,1 @@
+lillipup;5;4;41;normal/normal;45;60;45;25;45;55;55

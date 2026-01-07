@@ -1,0 +1,1 @@
+chikorita;2;9;64;grass/grass;45;49;65;49;65;45;64

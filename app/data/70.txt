@@ -1,0 +1,1 @@
+weepinbell;1;10;64;grass/poison;65;90;50;85;45;55;137

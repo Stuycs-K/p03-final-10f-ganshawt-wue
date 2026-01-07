@@ -1,0 +1,1 @@
+diglett;1;2;8;ground/ground;10;55;25;35;45;95;53

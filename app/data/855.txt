@@ -1,0 +1,1 @@
+polteageist;8;2;4;ghost/ghost;60;65;65;134;114;70;178

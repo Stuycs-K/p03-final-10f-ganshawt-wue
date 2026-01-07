@@ -1,0 +1,1 @@
+hitmontop;2;14;480;fighting/fighting;50;95;95;35;110;70;159

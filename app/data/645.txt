@@ -1,0 +1,1 @@
+landorus-incarnate;5;15;680;ground/flying;89;125;90;115;80;101;270

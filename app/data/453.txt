@@ -1,0 +1,1 @@
+croagunk;4;7;230;poison/fighting;48;61;40;61;40;50;60

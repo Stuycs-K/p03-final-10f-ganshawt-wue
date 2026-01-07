@@ -1,0 +1,1 @@
+lycanroc-midday;7;8;250;rock/rock;75;115;65;55;65;112;170

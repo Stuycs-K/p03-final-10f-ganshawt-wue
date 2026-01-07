@@ -1,0 +1,1 @@
+lickilicky;4;17;1400;normal/normal;110;85;95;80;95;50;180

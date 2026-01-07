@@ -1,0 +1,1 @@
+toxtricity-amped;8;16;400;electric/poison;75;98;70;114;70;75;176

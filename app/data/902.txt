@@ -1,0 +1,1 @@
+basculegion-male;8;30;1100;water/ghost;120;112;65;80;75;78;265

@@ -1,0 +1,1 @@
+magnemite;1;3;60;electric/steel;25;35;70;95;55;45;65

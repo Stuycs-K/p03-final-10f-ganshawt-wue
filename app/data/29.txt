@@ -1,0 +1,1 @@
+nidoran-f;1;4;70;poison/poison;55;47;52;40;40;41;55

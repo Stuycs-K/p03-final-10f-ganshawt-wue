@@ -1,0 +1,1 @@
+meloetta-aria;5;6;65;normal/psychic;100;77;77;128;128;90;270

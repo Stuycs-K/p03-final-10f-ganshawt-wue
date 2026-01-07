@@ -1,0 +1,1 @@
+fletchinder;6;7;160;fire/flying;62;73;55;56;52;84;134

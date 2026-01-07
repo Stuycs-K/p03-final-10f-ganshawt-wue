@@ -1,0 +1,1 @@
+sandshrew;1;6;120;ground/ground;50;75;85;20;30;40;60

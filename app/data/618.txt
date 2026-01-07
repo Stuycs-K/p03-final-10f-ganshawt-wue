@@ -1,0 +1,1 @@
+stunfisk;5;7;110;ground/electric;109;66;84;81;99;32;165

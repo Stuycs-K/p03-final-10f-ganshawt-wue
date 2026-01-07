@@ -1,0 +1,1 @@
+cresselia;4;15;856;psychic/psychic;120;70;110;75;120;85;270

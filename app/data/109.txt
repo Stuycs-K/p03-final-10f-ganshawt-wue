@@ -1,0 +1,1 @@
+koffing;1;6;10;poison/poison;40;65;95;60;45;35;68

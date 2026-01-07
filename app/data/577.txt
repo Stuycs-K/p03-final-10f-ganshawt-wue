@@ -1,0 +1,1 @@
+solosis;5;3;10;psychic/psychic;45;30;40;105;50;20;58

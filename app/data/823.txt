@@ -1,0 +1,1 @@
+corviknight;8;22;750;flying/steel;98;87;105;53;85;67;248

@@ -1,0 +1,1 @@
+magnezone;4;12;1800;electric/steel;70;70;115;130;90;60;241

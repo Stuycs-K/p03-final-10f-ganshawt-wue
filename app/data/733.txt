@@ -1,0 +1,1 @@
+toucannon;7;11;260;normal/flying;80;120;75;75;75;60;218

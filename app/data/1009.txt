@@ -1,0 +1,1 @@
+walking-wake;9;35;2800;water/dragon;99;83;91;125;83;109;295

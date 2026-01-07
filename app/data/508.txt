@@ -1,0 +1,1 @@
+stoutland;5;12;610;normal/normal;85;110;90;45;90;80;225

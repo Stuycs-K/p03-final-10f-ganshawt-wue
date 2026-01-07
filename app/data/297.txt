@@ -1,0 +1,1 @@
+hariyama;3;23;2538;fighting/fighting;144;120;60;40;60;50;166

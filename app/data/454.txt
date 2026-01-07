@@ -1,0 +1,1 @@
+toxicroak;4;13;444;poison/fighting;83;106;65;86;65;85;172

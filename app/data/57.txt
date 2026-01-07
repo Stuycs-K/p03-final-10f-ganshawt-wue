@@ -1,0 +1,1 @@
+primeape;1;10;320;fighting/fighting;65;105;60;60;70;95;159

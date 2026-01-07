@@ -1,0 +1,1 @@
+pichu;2;3;20;electric/electric;20;40;15;35;35;60;41

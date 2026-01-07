@@ -1,0 +1,1 @@
+plusle;3;4;42;electric/electric;60;50;40;85;75;95;142

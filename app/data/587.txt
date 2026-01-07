@@ -1,0 +1,1 @@
+emolga;5;4;50;electric/flying;55;75;60;75;60;103;150

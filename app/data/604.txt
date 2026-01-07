@@ -1,0 +1,1 @@
+eelektross;5;21;805;electric/electric;85;115;80;105;80;50;232

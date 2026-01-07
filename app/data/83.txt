@@ -1,0 +1,1 @@
+farfetchd;1;8;150;normal/flying;52;90;55;58;62;60;132

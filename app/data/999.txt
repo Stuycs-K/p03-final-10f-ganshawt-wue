@@ -1,0 +1,1 @@
+gimmighoul;9;3;50;ghost/ghost;45;30;70;75;70;10;60

@@ -1,0 +1,1 @@
+raticate;1;7;185;normal/normal;55;81;60;50;70;97;145

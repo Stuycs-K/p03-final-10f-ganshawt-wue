@@ -1,0 +1,1 @@
+darmanitan-standard;5;13;929;fire/fire;105;140;55;30;55;95;168

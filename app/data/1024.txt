@@ -1,0 +1,1 @@
+terapagos;9;2;65;normal/normal;90;65;85;65;85;60;90

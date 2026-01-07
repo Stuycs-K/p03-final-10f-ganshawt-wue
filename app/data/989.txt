@@ -1,0 +1,1 @@
+sandy-shocks;9;23;600;electric/ground;85;81;97;121;85;101;285

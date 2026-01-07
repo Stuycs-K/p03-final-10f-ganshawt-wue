@@ -1,0 +1,1 @@
+raichu;1;8;300;electric/electric;60;90;55;90;80;110;218

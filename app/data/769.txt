@@ -1,0 +1,1 @@
+sandygast;7;5;700;ghost/ground;55;55;80;70;45;15;64
