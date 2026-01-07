@@ -48,3 +48,18 @@ int server_setup() {
   freeaddrinfo(results);
   return clientd;
 }
+
+int server_tcp_handshake(int listen_socket){
+  int client_socket;
+  socklen_t sock_size;
+  struct sockaddr_storage client_address;
+  sock_size = sizeof(client_address);
+  //accept() the client connection
+  client_socket = accept(listen_socket, (struct sockaddr *)&client_address, &sock_size);
+  if (client_socket < 0) {
+    //printf("accept() error: %s\n", strerror(errno));
+    exit(1);
+  }
+  //printf("Server accepted from client @ socket: %d\n", client_socket);
+  return client_socket;
+}
