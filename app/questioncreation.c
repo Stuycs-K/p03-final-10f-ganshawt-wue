@@ -5,12 +5,14 @@ char * stat_types[6] = {"hp", "attack", "defense", "special attack", "special de
 char * qtypes[12] = {"name", "gen", "height (dm)", "weight (dg)", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
 
 int main(){
+  time_t t;
+
   char * answers[4];
   for(int i = 0; i < 4; i++)
   {
     answers[i] = calloc(15, 1);
   }
-  int ans = questioncreation(answers);
+  int ans = questioncreation((int) (unsigned) time(&t), answers);
   printf("Ans Pos: %d\n", ans);
   for(int i = 0; i < 4; i++)
   {
@@ -19,11 +21,9 @@ int main(){
   printf("\n");
 }
 
-int questioncreation(char ** answers){
+int questioncreation(int seed, char ** answers){
 
-  time_t t;
-
-  srand((unsigned) time(&t));
+  srand(seed);
   int rand_types = rand() % 18;
   int rand_stat = rand() % 6;
   // printf("TypeRand: %d\nStatRand: %d\n", rand_types, rand_stat);
