@@ -22,16 +22,11 @@ int subserver_logic(int client_socket) {
   }
   buffer[bytes_read] = '\0';
   //printf("%d Subserver received from client: %s\n", getpid(), buffer);
-  //Use rotX
-  rotX(buffer, 13);
-  //printf("%d Subserver sending back ROT13: %s\n", getpid(), buffer);
-  //Send rotX to client
   int bytes_written = write(client_socket, buffer, strlen(buffer));
   if (bytes_written < 0) {
     //printf("write() error: %s\n", strerror(errno));
     return 0;
   }
-  //printf("%d Subserver sent rotX successfully\n", getpid());
   return 1;
 }
 
