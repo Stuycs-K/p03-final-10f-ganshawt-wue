@@ -1,0 +1,1 @@
+taillow;3;3;23;normal/flying;40;55;30;30;30;85;54

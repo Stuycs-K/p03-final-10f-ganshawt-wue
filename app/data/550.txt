@@ -1,0 +1,1 @@
+basculin-red-striped;5;10;180;water/water;70;92;65;80;55;98;161

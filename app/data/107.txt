@@ -1,0 +1,1 @@
+hitmonchan;1;14;502;fighting/fighting;50;105;79;35;110;76;159

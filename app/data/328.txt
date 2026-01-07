@@ -1,0 +1,1 @@
+trapinch;3;7;150;ground/ground;45;100;45;45;45;10;58

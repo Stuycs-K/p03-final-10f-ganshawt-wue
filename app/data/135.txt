@@ -1,0 +1,1 @@
+jolteon;1;8;245;electric/electric;65;65;60;110;95;130;184

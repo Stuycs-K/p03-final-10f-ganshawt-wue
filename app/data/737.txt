@@ -1,0 +1,1 @@
+charjabug;7;5;105;bug/electric;57;82;95;55;75;36;140

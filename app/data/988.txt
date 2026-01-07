@@ -1,0 +1,1 @@
+slither-wing;9;32;920;bug/fighting;85;135;79;85;105;81;285

@@ -1,0 +1,1 @@
+bulbasaur;1;7;69;grass/poison;45;49;49;65;65;45;64

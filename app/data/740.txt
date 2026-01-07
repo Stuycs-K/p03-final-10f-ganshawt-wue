@@ -1,0 +1,1 @@
+crabominable;7;17;1800;fighting/ice;97;132;77;62;67;43;167

@@ -1,0 +1,1 @@
+wigglytuff;1;10;120;normal/fairy;140;70;45;85;50;45;196

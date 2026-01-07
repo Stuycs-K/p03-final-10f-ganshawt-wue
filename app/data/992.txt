@@ -1,0 +1,1 @@
+iron-hands;9;18;3807;fighting/electric;154;140;108;50;68;50;285

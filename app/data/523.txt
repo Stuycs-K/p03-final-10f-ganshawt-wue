@@ -1,0 +1,1 @@
+zebstrika;5;16;795;electric/electric;75;100;63;80;63;116;174

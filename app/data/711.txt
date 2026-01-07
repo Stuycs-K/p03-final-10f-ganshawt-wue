@@ -1,0 +1,1 @@
+gourgeist-average;6;9;125;ghost/grass;65;90;122;58;75;84;173

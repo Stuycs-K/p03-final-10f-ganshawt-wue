@@ -1,0 +1,1 @@
+shinx;4;5;95;electric/electric;45;65;34;40;34;45;53

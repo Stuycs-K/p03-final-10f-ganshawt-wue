@@ -1,0 +1,1 @@
+hoothoot;2;7;212;normal/flying;60;30;30;36;56;50;52

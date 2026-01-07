@@ -1,0 +1,1 @@
+sneasler;8;13;430;fighting/poison;80;130;60;40;80;120;102

@@ -1,0 +1,1 @@
+gothorita;5;7;180;psychic/psychic;60;45;70;75;85;55;137

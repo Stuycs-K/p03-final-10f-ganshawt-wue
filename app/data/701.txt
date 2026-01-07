@@ -1,0 +1,1 @@
+hawlucha;6;8;215;fighting/flying;78;92;75;74;63;118;175

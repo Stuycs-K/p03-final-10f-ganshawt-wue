@@ -1,0 +1,1 @@
+galvantula;5;8;143;bug/electric;70;77;60;97;60;108;165

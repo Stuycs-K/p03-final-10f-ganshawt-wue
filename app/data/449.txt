@@ -1,0 +1,1 @@
+hippopotas;4;8;495;ground/ground;68;72;78;38;42;32;66

@@ -1,0 +1,1 @@
+poltchageist;9;1;11;grass/ghost;40;45;45;74;54;50;62

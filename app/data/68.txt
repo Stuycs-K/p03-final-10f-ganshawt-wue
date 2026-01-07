@@ -1,0 +1,1 @@
+machamp;1;16;1300;fighting/fighting;90;130;80;65;85;55;227

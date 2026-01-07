@@ -1,0 +1,1 @@
+riolu;4;7;202;fighting/fighting;40;70;40;35;40;60;57

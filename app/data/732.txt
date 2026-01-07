@@ -1,0 +1,1 @@
+trumbeak;7;6;148;normal/flying;55;85;50;40;50;75;124

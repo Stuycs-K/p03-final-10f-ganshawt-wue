@@ -1,0 +1,1 @@
+electivire;4;18;1386;electric/electric;75;123;67;95;85;95;243

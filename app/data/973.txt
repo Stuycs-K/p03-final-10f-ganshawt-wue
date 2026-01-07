@@ -1,0 +1,1 @@
+flamigo;9;16;370;flying/fighting;82;115;74;75;64;90;175

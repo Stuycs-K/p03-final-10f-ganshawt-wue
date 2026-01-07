@@ -1,0 +1,1 @@
+smeargle;2;12;580;normal/normal;55;20;35;20;45;75;88

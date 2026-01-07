@@ -1,0 +1,1 @@
+keldeo-ordinary;5;14;485;water/fighting;91;72;90;129;90;108;261

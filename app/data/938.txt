@@ -1,0 +1,1 @@
+tadbulb;9;3;4;electric/electric;61;31;41;59;35;45;54

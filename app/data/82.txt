@@ -1,0 +1,1 @@
+magneton;1;10;600;electric/steel;50;60;95;120;70;70;163

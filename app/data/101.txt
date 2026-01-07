@@ -1,0 +1,1 @@
+electrode;1;12;666;electric/electric;60;50;70;80;80;150;172

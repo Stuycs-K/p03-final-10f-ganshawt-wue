@@ -1,0 +1,1 @@
+falinks;8;30;620;fighting/fighting;65;100;100;70;60;75;165

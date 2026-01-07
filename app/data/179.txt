@@ -1,0 +1,1 @@
+mareep;2;6;78;electric/electric;55;40;40;65;45;35;56

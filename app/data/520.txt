@@ -1,0 +1,1 @@
+tranquill;5;6;150;normal/flying;62;77;62;50;42;65;125

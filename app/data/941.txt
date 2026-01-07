@@ -1,0 +1,1 @@
+kilowattrel;9;14;386;electric/flying;70;70;60;105;60;125;172

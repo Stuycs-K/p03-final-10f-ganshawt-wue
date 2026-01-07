@@ -1,0 +1,1 @@
+zigzagoon;3;4;175;normal/normal;38;30;41;30;41;60;56

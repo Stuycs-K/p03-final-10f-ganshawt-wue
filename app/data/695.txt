@@ -1,0 +1,1 @@
+heliolisk;6;10;210;electric/normal;62;55;52;109;94;109;168

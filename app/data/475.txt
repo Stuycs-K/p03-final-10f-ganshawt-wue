@@ -1,0 +1,1 @@
+gallade;4;16;520;psychic/fighting;68;125;65;65;115;80;233

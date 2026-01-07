@@ -1,0 +1,1 @@
+spoink;3;7;306;psychic/psychic;60;25;35;70;80;60;66

@@ -1,0 +1,1 @@
+hitmonlee;1;15;498;fighting/fighting;50;120;53;35;110;87;159

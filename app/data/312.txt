@@ -1,0 +1,1 @@
+minun;3;4;42;electric/electric;60;40;50;75;85;95;142

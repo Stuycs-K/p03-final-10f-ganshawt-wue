@@ -1,0 +1,1 @@
+drowzee;1;10;324;psychic/psychic;60;48;45;43;90;42;66

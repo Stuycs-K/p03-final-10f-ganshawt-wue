@@ -1,0 +1,1 @@
+alakazam;1;15;480;psychic/psychic;55;50;45;135;95;120;225

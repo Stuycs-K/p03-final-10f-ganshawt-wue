@@ -1,0 +1,1 @@
+chimecho;3;6;10;psychic/psychic;75;50;80;95;90;65;159

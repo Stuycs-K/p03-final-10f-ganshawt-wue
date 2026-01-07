@@ -1,0 +1,1 @@
+makuhita;3;10;864;fighting/fighting;72;60;30;20;30;25;47

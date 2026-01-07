@@ -1,0 +1,1 @@
+luxio;4;9;305;electric/electric;60;85;49;60;49;60;127

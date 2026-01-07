@@ -1,0 +1,1 @@
+jigglypuff;1;5;55;normal/fairy;115;45;20;45;25;20;95

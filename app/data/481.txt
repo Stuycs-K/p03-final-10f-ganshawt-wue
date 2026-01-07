@@ -1,0 +1,1 @@
+mesprit;4;3;3;psychic/psychic;80;105;105;105;105;80;261

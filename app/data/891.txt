@@ -1,0 +1,1 @@
+kubfu;8;6;120;fighting/fighting;60;90;60;53;50;72;77

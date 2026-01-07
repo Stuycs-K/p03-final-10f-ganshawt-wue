@@ -1,0 +1,1 @@
+lickitung;1;12;655;normal/normal;90;55;75;60;75;30;77

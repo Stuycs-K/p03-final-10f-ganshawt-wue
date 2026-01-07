@@ -1,0 +1,1 @@
+marshtomp;3;7;280;water/ground;70;85;70;60;70;50;142

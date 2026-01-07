@@ -1,0 +1,1 @@
+munchlax;4;6;1050;normal/normal;135;85;40;40;85;5;78

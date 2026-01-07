@@ -1,0 +1,1 @@
+oranguru;7;15;760;normal/psychic;90;60;80;90;110;60;172

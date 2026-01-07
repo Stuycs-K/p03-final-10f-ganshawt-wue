@@ -1,0 +1,1 @@
+elekid;2;6;235;electric/electric;45;63;37;65;55;95;72

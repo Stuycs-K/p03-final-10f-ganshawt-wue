@@ -1,0 +1,1 @@
+tandemaus;9;3;18;normal/normal;50;50;45;40;45;75;61

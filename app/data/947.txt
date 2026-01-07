@@ -1,0 +1,1 @@
+brambleghast;9;12;60;grass/ghost;55;115;70;80;70;90;168

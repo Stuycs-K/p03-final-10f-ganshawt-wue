@@ -1,0 +1,1 @@
+indeedee-male;8;9;280;psychic/normal;60;65;55;105;95;95;166

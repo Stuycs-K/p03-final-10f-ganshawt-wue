@@ -1,0 +1,1 @@
+chinchou;2;5;120;water/electric;75;38;38;56;56;67;66

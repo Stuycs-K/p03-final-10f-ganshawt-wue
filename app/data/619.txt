@@ -1,0 +1,1 @@
+mienfoo;5;9;200;fighting/fighting;45;85;50;55;50;65;70

@@ -1,0 +1,1 @@
+scream-tail;9;12;80;fairy/psychic;115;65;99;65;115;111;285

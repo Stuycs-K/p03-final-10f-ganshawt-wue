@@ -1,0 +1,1 @@
+toedscool;9;9;330;ground/grass;40;40;35;50;100;70;67

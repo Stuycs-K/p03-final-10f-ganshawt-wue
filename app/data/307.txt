@@ -1,0 +1,1 @@
+meditite;3;6;112;fighting/psychic;30;40;55;40;55;60;56

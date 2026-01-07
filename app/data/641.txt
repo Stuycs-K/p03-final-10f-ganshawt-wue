@@ -1,0 +1,1 @@
+tornadus-incarnate;5;15;630;flying/flying;79;115;70;125;80;111;261

@@ -1,0 +1,1 @@
+minior-red-meteor;7;3;400;rock/flying;60;60;100;60;100;60;154

@@ -1,0 +1,1 @@
+kangaskhan;1;22;800;normal/normal;105;95;80;40;80;90;172

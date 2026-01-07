@@ -1,0 +1,1 @@
+electabuzz;1;11;300;electric/electric;65;83;57;95;85;105;172

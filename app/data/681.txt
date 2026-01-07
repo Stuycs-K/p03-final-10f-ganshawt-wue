@@ -1,0 +1,1 @@
+aegislash-shield;6;17;530;steel/ghost;60;50;140;50;140;60;234
