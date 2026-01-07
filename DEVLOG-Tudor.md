@@ -2,10 +2,8 @@
 
 This document must be updated daily every time you finish a work session.
 
-## Amy Smith  (CHANGE THIS!!!!! Also change the file name!)
+## Tudor Ganshaw
 
-### 2024-01-02 - Brief description
-Expanded description including how much time was spent on task.
-
-### 2024-01-03 - Brief description
-Expanded description including how much time was spent on task.
+### 2025-01-06 - Question Creation System
+Started work on the question creation system.
+Implemented the generation questions (45m) and the height/weight questions (30m). Set up the system for future questions to be implemented as well.
