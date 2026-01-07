@@ -57,9 +57,10 @@ int questioncreation(char ** answers){
     qdata[i] = strsep(&qdata_buff, ";");
   }
 
-  rand_qtype = 3;
+  rand_qtype = 4;
   printf("What is %s's %s?\nAns: %s\n", qdata[0], qtypes[rand_qtype], qdata[rand_qtype]);
-
+   // Turn everything above into a helper function
+   // Add in an array that [dexnum, qtype]
 
   int ans_position = rand() % 4;
 
@@ -133,8 +134,59 @@ int questioncreation(char ** answers){
 
       break;
     case 4:
-      printf("not default\n");
-      printf("%s\n", qtypes[rand_qtype]);
+      char type_string[20];
+      strcpy(type_string,qdata[rand_qtype]);
+      strcpy(answers[ans_position],qdata[rand_qtype]);
+
+      char temp_type_str[20];
+      strcpy(temp_type_str,qdata[rand_qtype]);
+
+
+      char * type_arr[2];
+      char * temp_str = temp_type_str;
+      for(int i = 0; i < 2; i++)
+      {
+        type_arr[i] = strsep(&temp_str, "/");
+      }
+      // for(int i = 0 ;i < 2; i++){printf("%s\n",type_arr[i]);}
+      //printf("%s\n",type_string);
+
+      for(int i = 1; i < 4; i++)
+      {
+        char temp_types[20];
+        char * temp_arr[2];
+        strcpy(temp_types,type_string);
+        while(isIn(answers,temp_types))
+        {
+          char * type1 = types[rand() % 18];
+          char * type2 = types[rand() % 18];
+          if (rand() % 2 == 0)
+          {
+            type1 = type_arr[0];
+          }
+          else if (rand() % 2 == 0)
+          {
+            type2 = type_arr[1];
+          }
+          char temp_cat_str[20];
+
+          strcpy(temp_cat_str, "");
+          strcat(temp_cat_str,type1);
+          strcat(temp_cat_str,"/");
+          strcat(temp_cat_str, type2);
+          strcpy(temp_types,temp_cat_str);
+
+
+          //printf("%s\n",temp_types);
+        }
+
+        int index = i + ans_position;
+        if(index < 0){index += 4;}
+        if(index > 3){index -= 4;}
+
+        strcpy(answers[index], temp_types);
+      }
+
       break;
     case 11:
       printf("not default\n");
