@@ -13,7 +13,7 @@ void lobby(int server_socket){
       exit(0);
     }
     buffer[bytes_read] = '\0';
-    if (strstr(buffer, "GETUSERNAME")) {
+    if (strstr(buffer, "Insert a username: ")) {
       printf("\nEnter your username: ");
       char username[32];
       if (fgets(username, sizeof(username), stdin) == NULL) {
@@ -24,7 +24,7 @@ void lobby(int server_socket){
       continue;
     }
     if (strstr(buffer, "START")) {
-      printf("Game starting!\n\n");
+      printf("\nGame starting!\n");
       break;
     }
     printf("\r%s", buffer);
