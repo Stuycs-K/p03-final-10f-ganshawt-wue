@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
     }
     srand(time(NULL));
     printf("Lobby full! Starting game...\n");
-    char request_username[] = "Your username: \n";
+    char request_username[] = "GETUSER\n";
     for (int i = 0; i < 4; i++) {
       write(client_sockets[i], request_username, strlen(request_username));
     }
@@ -134,7 +134,7 @@ int main(int argc, char *argv[]) {
       }
       printf("Player %d username: %s\n", i + 1, players[i].username);
     }
-    char start_msg[] = "Game starting!\n";
+    char start_msg[] = "START\n";
     for (int i = 0; i < 4; i++) {
       write(client_sockets[i], start_msg, strlen(start_msg));
     }
@@ -206,5 +206,5 @@ int main(int argc, char *argv[]) {
       close(client_sockets[i]);
     }
   }
-  return 0;     
+  return 0;
 }
