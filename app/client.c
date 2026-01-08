@@ -7,33 +7,34 @@ void sigint_handler(int sig) {
 
 void clientLogic(int server_socket){
   char buffer[BUFFER_SIZE];
-  //Ask for string
-  printf("I think it's ");
-  if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-    //printf("\nClient exit\n");
-    close(server_socket);
-    kill(getpid(), EOF);
-    exit(0);
+  while ()  {
+    printf("Waiting for 4 players...");
   }
-  buffer[strcspn(buffer, "\n")] = '\0';
-  //Send input to server
-  int bytes_written = write(server_socket, buffer, strlen(buffer));
-  if (bytes_written < 0) {
-    //printf("write() error: %s\n", strerror(errno));
-    return;
-  }
-  //printf("Client sent string to server: %s\n", buffer);
-  int bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
-  if (bytes_read < 0) {
-    //printf("read() error: %s\n", strerror(errno));
-    exit(0);
-  }
-  if (bytes_read == 0) {
-    //printf("Server disconnected\n");
-    close(server_socket);
-    //exit(0);
-  }
-  buffer[bytes_read] = '\0';
+  // if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+  //   //printf("\nClient exit\n");
+  //   close(server_socket);
+  //   kill(getpid(), EOF);
+  //   exit(0);
+  // }
+  // buffer[strcspn(buffer, "\n")] = '\0';
+  // //Send input to server
+  // int bytes_written = write(server_socket, buffer, strlen(buffer));
+  // if (bytes_written < 0) {
+  //   //printf("write() error: %s\n", strerror(errno));
+  //   return;
+  // }
+  // //printf("Client sent string to server: %s\n", buffer);
+  // int bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
+  // if (bytes_read < 0) {
+  //   //printf("read() error: %s\n", strerror(errno));
+  //   exit(0);
+  // }
+  // if (bytes_read == 0) {
+  //   //printf("Server disconnected\n");
+  //   close(server_socket);
+  //   //exit(0);
+  // }
+  // buffer[bytes_read] = '\0';
 }
 
 int main(int argc, char *argv[] ) {
