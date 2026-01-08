@@ -1,23 +1,49 @@
 #include "networking.h"
+#include "questioncreation.h"
+
+typedef struct {
+  int client_id;
+  int score;
+  int socket;
+  char username[32];
+} PlayerScore;
 
 void sigint_handler(int sig) {
   remove(".server_ip");
   exit(0);
 }
 
-int subserver_logic(int client_socket) {
+void send_client(int socket, const char *msg) {
+  write(socket, msg, strlen(msg));
+}
+
+void send_question(int client_socket, const char *question, char **answers) {
   char buffer[BUFFER_SIZE];
-  int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
-  if (bytes_read <= 0) {
-    close(client_socket);
-    return 0;
+  snprintf(buffer, sizeof(buffer), "Question: %s\n", question);
+  send_client(client_socket, buffer);
+  for (int i = 0; i < 4; i++) {
+    snprintf(buffer, sizeof(buffer), "%d. %s\n", i + 1, answers[i]);
+    send_client(client_socket, buffer);
   }
-  buffer[bytes_read] = '\0';
-  int bytes_written = write(client_socket, buffer, strlen(buffer));
-  if (bytes_written < 0) {
-    return 0;
+  send_client(client_socket, "END\n");
+}
+
+int subserver_logic(int client_socket, int client_id, char *username) {
+  char buffer[BUFFER_SIZE];
+  int score = 0
+  snprintf(buffer, sizeof(buffer), "USERNAME:%s\n", username);
+  send_client(client_socket, buffer);
+  for (int round = 1; round <= 10; round++) {
+    char *answers[4];
+    for (int i = 0; i < 4; i++) {
+      answers[i] = calloc(50, 1);
+    }
+    int correct_pos = questioncreation(answers);
+    char question[256];
+    snprintf(question, sizeof(question), "Question %d/10", round);
+    send_question(client_socket, question, answers);
+    int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
   }
-  return 1;
 }
 
 void send_lobby_status(int *sockets, int count) {
