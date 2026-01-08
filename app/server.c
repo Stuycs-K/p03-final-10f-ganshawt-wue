@@ -43,7 +43,30 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     snprintf(question, sizeof(question), "Question %d/10", round);
     send_question(client_socket, question, answers);
     int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
+    if (bytes_read <= 0) {
+      for (int i = 0; i < 4; i++)  {
+        free(answers[i]);
+      }
+      return score;
+    }
+    buffer[bytes_read] = '\0';
+    int client_answer;
+    sscanf(buffer, "%d", &client_answer);
+    client_answer -= 1;
+    if (client_answer == correct_pos) {
+      score++;
+      send_client(client_socket, "Correct!\n");
+    }  else  {
+    	snprintf(buffer, sizeof(buffer), "Wrong.\nCorrect answer was %d\n", correct_pos + 1);
+    	send_client(client_socket, buffer);
+    }
+    for (int i = 0; i < 4; i++)  {
+      free(answers[i]);
+    }
   }
+  snprintf(buffer, sizeof(buffer), "Your final score was %d\n", score);
+  send_client(client_socket, buffer);
+  return score;
 }
 
 void send_lobby_status(int *sockets, int count) {
@@ -75,10 +98,47 @@ int main(int argc, char *argv[]) {
     }
     srand(time(NULL));
     printf("Lobby full! Starting game...\n");
+    char request_username[] = "Your username: \n";
+    for (int i = 0; i < 4; i++) {
+      write(client_sockets[i], request_username, strlen(request_username));
+    }
+    PlayerScore players[4];
+    char usernames[4][32];
+    for (int i = 0; i < 4; i++) {
+      char buffer[BUFFER_SIZE];
+      int bytes_read = read(client_sockets[i], buffer, sizeof(buffer) - 1);
+      if (bytes_read > 0) {
+        buffer[bytes_read] = '\0';
+        buffer[strcspn(buffer, "\n")] = '\0';
+        strncpy(usernames[i], buffer, 31);
+        usernames[i][31] = '\0';
+      }  else  {
+        snprintf(usernames[i], 32, "Player%d", i + 1);
+      }
+      players[i].client_id = i + 1;
+      players[i].socket = client_sockets[i];
+      players[i].score = 0;
+    }
+    for (int i = 0; i < 4; i++)  {
+      int duplicate = 0;
+      for (int j = 0; j < i; j++) {
+        if (strcmp(usernames[i], usernames[j]) == 0) {
+          duplicate = 1;
+          break;
+        }
+      }
+      if (duplicate)  {
+      	snprintf(players[i].username, sizeof(players[i].username), "%s_%d", usernames[i], i + 1);
+      }  else  {
+      	strncpy(players[i].username, usernames[i], sizeof(players[i].username) - 1);
+      }
+      printf("Player %d username: %s\n", i + 1, players[i].username);
+    }
     char start_msg[] = "Game starting!\n";
     for (int i = 0; i < 4; i++) {
       write(client_sockets[i], start_msg, strlen(start_msg));
     }
+    pid_t child_pids[4];
     for (int i = 0; i < 4; i++) {
       pid_t pid = fork();
       if (pid < 0) {
@@ -92,14 +152,59 @@ int main(int argc, char *argv[]) {
             close(client_sockets[j]);
           }
         }
-        while (subserver_logic(client_sockets[i]));
+        int final_score = subserver_logic(client_sockets[i], i, players[i].username);
+        char scorefile[32];
+        snprintf(scorefile, sizeof(scorefile), ".score_%d", getpid());
+        FILE *sf = fopen(scorefile, "w");
+        if (sf) {
+          fprintf(sf, "%d", final_score);
+          fclose(sf);
+        }
         close(client_sockets[i]);
         exit(0);
+      }  else  {
+      	child_pids[i] = pid;
       }
-    } 
+    }
+    for (int i = 0; i < 4; i++) {
+      int status;
+      waitpid(child_pids[i], &status, 0);
+      char scorefile[32];
+      snprintf(scorefile, sizeof(scorefile), ".score_%d", child_pids[i]);
+      FILE *sf = fopen(scorefile, "r");
+      if (sf) {
+        fscanf(sf, "%d", &players[i].score);
+        fclose(sf);
+        remove(scorefile);
+      }
+    }
+    for (int i = 0; i < 3; i++) {
+      for (int j = i + 1; j < 4; j++) {
+        if (players[j].score > players[i].score) {
+          PlayerScore temp = players[i];
+          players[i] = players[j];
+          players[j] = temp;
+        }
+      }
+    }
+    printf("\nFinal Scores\n");
+    for (int i = 0; i < 4; i++) {
+      printf("%d. %s: %d/10\n", i + 1, players[i].username, players[i].score);
+    }
+    printf("\n");
+    char leaderboard[BUFFER_SIZE];
+    int offset = 0;
+    offset += snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "LEADERBOARD\n");
+    for (int i = 0; i < 4; i++) {
+      offset += snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "%d. %s: %d/10\n", i + 1, players[i].username, players[i].score);
+    }
+    snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "END\n");
+    for (int i = 0; i < 4; i++) {
+      write(client_sockets[i], leaderboard, strlen(leaderboard));
+    }
     for (int i = 0; i < 4; i++) {
       close(client_sockets[i]);
     }
   }
-  return 0;
+  return 0;     
 }
