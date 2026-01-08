@@ -1,33 +1,31 @@
 #include "networking.h"
 
-// Signal handler for SIGINT
 void sigint_handler(int sig) {
-  //printf("Server exit");
   remove(".server_ip");
   exit(0);
 }
 
 int subserver_logic(int client_socket) {
   char buffer[BUFFER_SIZE];
-  //Listen for string
   int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
-  if (bytes_read < 0) {
-    //printf("read() error: %s\n", strerror(errno));
-    return 0;
-  }
-  if (bytes_read == 0) {
-    //printf("Subserver client disconnected\n");
+  if (bytes_read <= 0) {
     close(client_socket);
     return 0;
   }
   buffer[bytes_read] = '\0';
-  //printf("%d Subserver received from client: %s\n", getpid(), buffer);
   int bytes_written = write(client_socket, buffer, strlen(buffer));
   if (bytes_written < 0) {
-    //printf("write() error: %s\n", strerror(errno));
     return 0;
   }
   return 1;
+}
+
+void send_lobby_status(int *sockets, int count) {
+  char msg[64];
+  snprintf(msg, sizeof(msg), "Waiting for full lobby (%d/4)\n", count);
+  for (int i = 0; i < count; i++) {
+    write(sockets[i], msg, strlen(msg));
+  }
 }
 
 int main(int argc, char *argv[]) {
@@ -38,31 +36,43 @@ int main(int argc, char *argv[]) {
   if (fp) {
     fprintf(fp, "%s\n", hostname);
     fclose(fp);
-    //printf("Server running %s\n", hostname);
   }
   int listen_socket = server_setup();
+  int client_sockets[4];
   while (1) {
     while (waitpid(-1, NULL, WNOHANG) > 0);
-    printf("Waiting for client\n");
-    int client_socket = server_tcp_handshake(listen_socket);
-    //Fork subserver
-    pid_t pid = fork();
-    if (pid < 0) {
-      //printf("fork() error: %s\n", strerror(errno));
-      close(client_socket);
-      continue;
+    printf("Waiting for 4 clients...\n");
+    for (int i = 0; i < 4; i++) {
+      client_sockets[i] = server_tcp_handshake(listen_socket);
+      printf("Client %d/4 connected\n", i + 1);
+      send_lobby_status(client_sockets, i + 1);
     }
-    if (pid == 0) {
-      close(listen_socket);
-      while (subserver_logic(client_socket)) {
+    srand(time(NULL));
+    printf("Lobby full! Starting game...\n");
+    char start_msg[] = "Game starting!\n";
+    for (int i = 0; i < 4; i++) {
+      write(client_sockets[i], start_msg, strlen(start_msg));
+    }
+    for (int i = 0; i < 4; i++) {
+      pid_t pid = fork();
+      if (pid < 0) {
+        close(client_sockets[i]);
+        continue;
       }
-      close(client_socket);
-      //printf("%d Connection closed\n", getpid());
-      exit(0);
-    }
-    else {
-      close(client_socket);
-      //printf("Forked child process %d for client\n", pid);
+      if (pid == 0) {
+        close(listen_socket);
+        for (int j = 0; j < 4; j++) {
+          if (j != i)  {
+            close(client_sockets[j]);
+          }
+        }
+        while (subserver_logic(client_sockets[i]));
+        close(client_sockets[i]);
+        exit(0);
+      }
+    } 
+    for (int i = 0; i < 4; i++) {
+      close(client_sockets[i]);
     }
   }
   return 0;
