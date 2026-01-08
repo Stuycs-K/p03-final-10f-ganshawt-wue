@@ -30,7 +30,7 @@ void send_question(int client_socket, const char *question, char **answers) {
 
 int subserver_logic(int client_socket, int client_id, char *username) {
   char buffer[BUFFER_SIZE];
-  int score = 0
+  int score = 0;
   snprintf(buffer, sizeof(buffer), "USERNAME:%s\n", username);
   send_client(client_socket, buffer);
   for (int round = 1; round <= 10; round++) {
@@ -128,7 +128,7 @@ int main(int argc, char *argv[]) {
         }
       }
       if (duplicate)  {
-      	snprintf(players[i].username, sizeof(players[i].username), "%s_%d", usernames[i], i + 1);
+      	snprintf(players[i].username, 31, "%s_%d", usernames[i], i + 1);
       }  else  {
       	strncpy(players[i].username, usernames[i], sizeof(players[i].username) - 1);
       }

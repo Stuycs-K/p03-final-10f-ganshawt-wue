@@ -4,21 +4,6 @@ char * types[18] = {"fire", "water", "grass", "electric", "ghost", "poison", "ic
 char * stat_types[6] = {"hp", "attack", "defense", "special attack", "special defense", "speed"};
 char * qtypes[12] = {"name", "gen", "height (dm)", "weight (dg)", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
 
-int main(){
-  char * answers[4];
-  for(int i = 0; i < 4; i++)
-  {
-    answers[i] = calloc(15, 1);
-  }
-  int ans = questioncreation(answers);
-  printf("Ans Pos: %d\n", ans);
-  for(int i = 0; i < 4; i++)
-  {
-    printf("%s, ", answers[i]);
-  }
-  printf("\n");
-}
-
 int questioncreation(char ** answers){
 
   time_t t;
