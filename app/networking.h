@@ -15,7 +15,7 @@
 #ifndef NETWORKING_H
 #define NETWORKING_H
 #define PORT "10101"
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 10240
 int server_setup();
 int client_tcp_handshake(char*server_address);
 int server_tcp_handshake(int listen_socket);

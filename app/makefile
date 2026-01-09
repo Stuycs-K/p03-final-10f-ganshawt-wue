@@ -2,15 +2,12 @@ qc_compile qc_program: questioncreation.o
 	gcc -Wall -o qc_program questioncreation.o
 
 qc_run: qc_program
-	./qc_program
+	@./qc_program
 
 compile: server client
 
 server: server.o networking.o questioncreation.o
 	gcc -o server server.o networking.o questioncreation.o
-
-questioncreation.o: questioncreation.c questioncreation.h
-	gcc -c questioncreation.c
 
 client: client.o networking.o
 	gcc -o client client.o networking.o

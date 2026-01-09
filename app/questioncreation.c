@@ -6,7 +6,6 @@ char * qtypes[12] = {"name", "gen", "height (dm)", "weight (hg)", "type", "hp", 
 
 int questioncreation(int rand_dexnum, int rand_qtype, int seed, char ** answers){
   srand(seed);
-
   char pkmn_file[15] = "data/";
   char dexnum_str[10];
   sprintf(dexnum_str, "%d.txt", rand_dexnum);

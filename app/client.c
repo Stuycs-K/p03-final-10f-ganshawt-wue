@@ -40,7 +40,7 @@ void receive_question(int server_socket, char *question, char answers[4][50]) {
       printf("Server disconnected\n");
       exit(0);
     }
-    buffer[bytes_read] = '\0';
+   buffer[bytes_read] = '\0';
     char *line_start = buffer;
     char *line_end;
     while ((line_end = strchr(line_start, '\n')) != NULL) {
@@ -89,11 +89,12 @@ void game(int server_socket) {
       exit(0);
     }
     buffer[bytes_read] = '\0';
+    printf("%s\n", buffer);
     if (strncmp(buffer, "RESULT:CORRECT", 14) == 0) {
       printf("Correct!\n\n");
-    }  else if  (strncmp(buffer, "RESULT:WRONG:", 13) == 0)  {
+    }  else if  (strncmp(buffer, "RESULT:WRONG:", 12) == 0)  {
       int correct_ans;
-      sscanf(buffer + 13, "%d", &correct_ans);
+      sscanf(buffer + 12, "%d", &correct_ans);
       printf("Wrong! Correct answer was %d\n\n", correct_ans);
     }
   }

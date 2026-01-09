@@ -19,7 +19,7 @@ void send_client(int socket, const char *msg) {
 
 void send_question(int client_socket, const char *question, char **answers) {
   char buffer[BUFFER_SIZE];
-  snprintf(buffer, sizeof(buffer), "Question: %s\n", question);
+  snprintf(buffer, sizeof(buffer), "Q: %s\n", question);
   send_client(client_socket, buffer);
   for (int i = 0; i < 4; i++) {
     snprintf(buffer, sizeof(buffer), "%d. %s\n", i + 1, answers[i]);
@@ -29,20 +29,34 @@ void send_question(int client_socket, const char *question, char **answers) {
 }
 
 int subserver_logic(int client_socket, int client_id, char *username) {
+  char * qtypes[12] = {"name", "gen", "height (dm)", "weight (hg)", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
   char buffer[BUFFER_SIZE];
   int score = 0;
   snprintf(buffer, sizeof(buffer), "USERNAME:%s\n", username);
   send_client(client_socket, buffer);
   for (int round = 1; round <= 10; round++) {
-    char *answers[4];
+    char **answers = calloc(4, 50);
     for (int i = 0; i < 4; i++) {
       answers[i] = calloc(50, 1);
     }
-    int correct_pos = questioncreation(answers);
+
+    int rand_qtype = rand() % 12;
+    if(rand_qtype == 0){rand_qtype = 1;}
+
+    int rand_dexnum = rand() % 1025;
+    if(rand_dexnum <= 0){rand_dexnum = 1;}
+
+    char pkmn_name[20];
+    getName(rand_dexnum, pkmn_name);
+    // printf("What is %s's %s?\n", pkmn_name, qtypes[rand_qtype]);
+
+    int correct_pos = questioncreation(rand_dexnum, rand_qtype, answers);
     char question[256];
-    snprintf(question, sizeof(question), "Question %d/10", round);
+    snprintf(question, sizeof(question), "Question %d/10: What is %s's %s?", round, pkmn_name, qtypes[rand_qtype]);
+    printf("question: %s\n",question);
     send_question(client_socket, question, answers);
     int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
+
     if (bytes_read <= 0) {
       for (int i = 0; i < 4; i++)  {
         free(answers[i]);
@@ -50,19 +64,28 @@ int subserver_logic(int client_socket, int client_id, char *username) {
       return score;
     }
     buffer[bytes_read] = '\0';
+  //  printf("%d: %s\n",bytes_read,buffer);
     int client_answer;
     sscanf(buffer, "%d", &client_answer);
     client_answer -= 1;
     if (client_answer == correct_pos) {
+    //  printf("correct!\n");
       score++;
-      send_client(client_socket, "Correct!\n");
+
+      send_client(client_socket, "RESULT:CORRECT\n");
     }  else  {
-    	snprintf(buffer, sizeof(buffer), "Wrong.\nCorrect answer was %d\n", correct_pos + 1);
+      snprintf(buffer, sizeof(buffer), "RESULT:WRONG%d", correct_pos + 1);
+    //  printf("%s\n", buffer);
     	send_client(client_socket, buffer);
     }
+
+    printf("score: %d\n", score);
     for (int i = 0; i < 4; i++)  {
+      //printf("freeing answers\n");
+    //  printf("INVALID: %s\n", answers[i]);
       free(answers[i]);
     }
+    free(answers);
   }
   snprintf(buffer, sizeof(buffer), "Your final score was %d\n", score);
   send_client(client_socket, buffer);
