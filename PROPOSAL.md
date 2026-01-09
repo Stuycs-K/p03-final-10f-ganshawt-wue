@@ -24,9 +24,7 @@ Design:
 - Question creation system: Tudor  
 - Server-client connection: Eviss  
 - Client answer system: Eviss  
-- Server answer checking system: Tudor  
-- Global score leaderboard: Tudor  
-- User authentication system: Eviss  
+- User authentication system: Tudor  
 - Presentation video editing: Tudor  
 - Further tasks will be added any of the tasks above prove too challenging for only one person to do
 
