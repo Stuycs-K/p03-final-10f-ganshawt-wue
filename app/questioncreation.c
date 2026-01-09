@@ -78,7 +78,7 @@ int questioncreation(int rand_dexnum, int rand_qtype, char ** answers){
     case 1:
       int generation;
       sscanf(qdata[rand_qtype], "%d", &generation);
-      answers[ans_position] = qdata[rand_qtype];
+      strcpy(answers[ans_position],qdata[rand_qtype]);
 
       for(int i = 1; i < 4; i++)
       {

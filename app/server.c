@@ -90,7 +90,7 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     //  printf("INVALID: %s\n", answers[i]);
       free(answers[i]);
     }
-    free(answers);
+  //  free(answers);
   }
   snprintf(buffer, sizeof(buffer), "Your final score was %d\n", score);
   send_client(client_socket, buffer);
