@@ -6,7 +6,7 @@ questioncreation.o: questioncreation.c questioncreation.h
 
 qc_run: qc_program
 	@./qc_program
-	
+
 compile: server client
 
 server: server.o networking.o questioncreation.o
