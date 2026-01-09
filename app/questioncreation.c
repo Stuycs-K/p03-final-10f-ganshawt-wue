@@ -4,59 +4,57 @@ char * types[18] = {"fire", "water", "grass", "electric", "ghost", "poison", "ic
 char * stat_types[6] = {"hp", "attack", "defense", "special attack", "special defense", "speed"};
 char * qtypes[12] = {"name", "gen", "height (dm)", "weight (hg)", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
 
-int main(){
-  time_t t;
-  srand((int) (unsigned) time(&t));
+// int main(){
+//   time_t t;
+//   srand((int) (unsigned) time(&t));
+//
+//   int rand_qtype = rand() % 12;
+//   if(rand_qtype == 0){rand_qtype = 1;}
+//
+//   int rand_dexnum = rand() % 1025;
+//   if(rand_dexnum <= 0){rand_dexnum = 1;}
+//
+//   int child_pid = 1;
+//   for(int i = 0; i < 4; i++)
+//   {
+//     if(child_pid != 0){child_pid = fork();}
+//   }
+//
+//   if(child_pid == 0)
+//   {
+//     char * answers[4];
+//     for(int i = 0; i < 4; i++)
+//     {
+//       answers[i] = calloc(15, 1);
+//     }
+//
+//     char pkmn_name[20];
+//     getName(rand_dexnum, pkmn_name);
+//     printf("What is %s's %s?\n", pkmn_name, qtypes[rand_qtype]);
+//
+//     int ans = questioncreation(rand_dexnum, rand_qtype, answers);
+//     printf("Ans: %s at pos %d\n", answers[ans], ans);
+//     for(int i = 0; i < 4; i++)
+//     {
+//       printf("%s, ", answers[i]);
+//     }
+//     printf("-----------------------------\n");
+//   }
+//   else{
+//     for(int i = 0; i < 4; i++)
+//     {
+//       int waitval;
+//       wait(&waitval);
+//     }
+//   }
+// }
 
-  int rand_qtype = rand() % 12;
-  //rand_qtype = (rand() % 6) + 5;
-  //rand_qtype = 11;
-  if(rand_qtype == 0){rand_qtype = 1;}
-
-  int rand_dexnum = rand() % 1025;
-  if(rand_dexnum <= 0){rand_dexnum = 1;}
-
-
-  char * answers[4];
-  for(int i = 0; i < 4; i++)
-  {
-    answers[i] = calloc(15, 1);
-  }
-
-  char pkmn_name[20];
-  getName(rand_dexnum, pkmn_name);
-  printf("What is %s's %s?\n", pkmn_name, qtypes[rand_qtype]);
-
-  int ans = questioncreation(rand_dexnum, rand_qtype, (int) (unsigned) time(&t), answers);
-  printf("Ans: %s at pos %d\n", answers[ans], ans);
-  for(int i = 0; i < 4; i++)
-  {
-    printf("%s, ", answers[i]);
-  }
-  printf("\n");
-}
-
-int questioncreation(int rand_dexnum, int rand_qtype, int seed, char ** answers){
-
-  srand(seed);
-  int rand_types = rand() % 18;
-  int rand_stat = rand() % 6;
-  // printf("TypeRand: %d\nStatRand: %d\n", rand_types, rand_stat);
-  // printf("Type: %s\nStat: %s\n", types[rand_types], stat_types[rand_stat]);
-
-
-  // printf("Rand Qtype: %d\nQuestion: %s\n", rand_qtype, qtypes[rand_qtype]);
-
-
-  // printf("Rand Dexnum: %d\n",rand_dexnum);
+int questioncreation(int rand_dexnum, int rand_qtype, char ** answers){
 
   char pkmn_file[15] = "data/";
-//  printf("%s\n",pkmn_file);
   char dexnum_str[10];
   sprintf(dexnum_str, "%d.txt", rand_dexnum);
-//   printf("%s\n",dexnum_str);
   strcat(pkmn_file,dexnum_str);
-//  printf("%s\n", pkmn_file);
 
   FILE * info_file = fopen(pkmn_file, "r");
   char info_buff[100];
@@ -258,7 +256,7 @@ void getName(int dexnum, char * pkmn_name)
 
   char * qdata[12];
   char * qdata_buff = info_buff;
-  for(int i = 0; i < 12; i++)
+  for(int i = 0; i < 1; i++)
   {
     qdata[i] = strsep(&qdata_buff, ";");
   }
