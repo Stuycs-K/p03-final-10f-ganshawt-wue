@@ -14,7 +14,7 @@
 
 #ifndef QUESTIONCREATION_H
   #define QUESTIONCREATION_H
-  int questioncreation(int rand_dexnum, int rand_qtype, int seed, char ** answers);
+  int questioncreation(int rand_dexnum, int rand_qtype, char ** answers);
   int isIn(char ** arr, char * str);
   void getName(int dexnum, char * pkmn_name);
 

@@ -32,7 +32,7 @@ char * qtypes[12] = {"name", "gen", "height (dm)", "weight (hg)", "type", "hp", 
 //     getName(rand_dexnum, pkmn_name);
 //     printf("What is %s's %s?\n", pkmn_name, qtypes[rand_qtype]);
 //
-//     int ans = questioncreation(rand_dexnum, rand_qtype, (int) (unsigned) time(&t), answers);
+//     int ans = questioncreation(rand_dexnum, rand_qtype, answers);
 //     printf("Ans: %s at pos %d\n", answers[ans], ans);
 //     for(int i = 0; i < 4; i++)
 //     {
@@ -49,9 +49,7 @@ char * qtypes[12] = {"name", "gen", "height (dm)", "weight (hg)", "type", "hp", 
 //   }
 // }
 
-int questioncreation(int rand_dexnum, int rand_qtype, int seed, char ** answers){
-
-  srand(seed);
+int questioncreation(int rand_dexnum, int rand_qtype, char ** answers){
 
   char pkmn_file[15] = "data/";
   char dexnum_str[10];
