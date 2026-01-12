@@ -36,6 +36,7 @@ void receive_question(int server_socket, char *question, char answers[4][50]) {
   char buffer[BUFFER_SIZE];
   while (1) {
     int bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
+    // printf("%d\n", bytes_read);
     if (bytes_read <= 0) {
       printf("Server disconnected\n");
       exit(0);
@@ -78,10 +79,24 @@ void game(int server_socket) {
       printf("%d. %s\n", i + 1, answers[i]);
     }
     printf("Your answer (1-4): ");
-    if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+    char * temp = fgets(buffer, sizeof(buffer), stdin);
+    if(temp == NULL){
       close(server_socket);
       exit(0);
     }
+    while(strlen(buffer) > 2 || buffer[0] < 49 || buffer[0] > 52)
+    {
+      printf("Your answer (1-4): ");
+      char * temp = fgets(buffer, sizeof(buffer), stdin);
+      if(temp == NULL){
+        close(server_socket);
+        exit(0);
+      }
+    }
+    // if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+    //   close(server_socket);
+    //   exit(0);
+    // }
     buffer[strcspn(buffer, "\n")] = '\0';
     write(server_socket, buffer, strlen(buffer));
     bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
@@ -90,7 +105,7 @@ void game(int server_socket) {
       exit(0);
     }
     buffer[bytes_read] = '\0';
-    printf("%s\n", buffer);
+    //printf("%s\n", buffer);
     if (strncmp(buffer, "RESULT:CORRECT", 14) == 0) {
       printf("Correct!\n\n");
     }  else if  (strncmp(buffer, "RESULT:WRONG:", 12) == 0)  {

@@ -16,3 +16,12 @@ Implemented the type, stat, and base experience questions (60m). Also made it ea
 Fixed question creation system to work with question asking system
 Allowed server to send questions to the clients properly
 Tried to fix issues with server randomly desyncing from clients or disconnecting (failed).
+
+## 2025-01-09 - More bug fixes
+Fixed issue with generation questions breaking due to an issue in questioncreation.c
+Desync issue still persists
+
+## 2025-01-11 - Even more bug fixes
+Fixed issue where non-valid inputs would be accepted
+Fixed part of one desync issue
+Issues still persist with desync & with questions occasionally not printing correctly

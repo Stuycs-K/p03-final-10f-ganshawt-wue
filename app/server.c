@@ -16,7 +16,8 @@ void sigint_handler(int sig) {
 }
 
 void send_client(int socket, const char *msg) {
-  write(socket, msg, strlen(msg));
+  int written_bytes = write(socket, msg, strlen(msg));
+  printf("%d, %d\n",socket,written_bytes);
 }
 
 void send_question(int client_socket, const char *question, char **answers) {
@@ -84,7 +85,7 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     	send_client(client_socket, buffer);
     }
 
-    printf("score: %d\n", score);
+    //printf("score: %d\n", score);
     for (int i = 0; i < 4; i++)  {
       //printf("freeing answers\n");
     //  printf("INVALID: %s\n", answers[i]);
@@ -161,6 +162,7 @@ int main(int argc, char *argv[]) {
       	strncpy(players[i].username, usernames[i], sizeof(players[i].username) - 1);
       }
       printf("Player %d username: %s\n", i + 1, players[i].username);
+      printf("%d\n", client_sockets[i]);
     }
     char start_msg[] = "START";
     for (int i = 0; i < 4; i++) {
