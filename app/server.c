@@ -16,8 +16,9 @@ void sigint_handler(int sig) {
 }
 
 void send_client(int socket, const char *msg) {
+  printf("%s\n", msg);
   int written_bytes = write(socket, msg, strlen(msg));
-  printf("%d, %d\n",socket,written_bytes);
+  //printf("%d, %d\n",socket,written_bytes);
 }
 
 void send_question(int client_socket, const char *question, char **answers) {

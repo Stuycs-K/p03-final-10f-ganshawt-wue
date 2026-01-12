@@ -3,6 +3,7 @@ qc_program
 *.h:*
 server
 client
+*.score*
 
 # Prerequisites
 *.d

@@ -33,10 +33,11 @@ void lobby(int server_socket){
 }
 
 void receive_question(int server_socket, char *question, char answers[4][50]) {
+  printf("----------------------\n");
   char buffer[BUFFER_SIZE];
   while (1) {
     int bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
-    // printf("%d\n", bytes_read);
+    printf("%s\n", buffer);
     if (bytes_read <= 0) {
       printf("Server disconnected\n");
       exit(0);
@@ -58,6 +59,7 @@ void receive_question(int server_socket, char *question, char answers[4][50]) {
       line_start = line_end + 1;
     }
    }
+   printf("----------------------\n");
 }
 
 void game(int server_socket) {
