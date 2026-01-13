@@ -95,8 +95,7 @@ int subserver_logic(int client_socket, int client_id, char *username) {
   //  free(answers);
   }
   // snprintf(buffer, sizeof(buffer), "Your final score was %d\n", score);
-  sprintf(buffer, "Your final score was %d\n", score);
-  send_client(client_socket, buffer);
+  // send_client(client_socket, buffer);
   return score;
 }
 

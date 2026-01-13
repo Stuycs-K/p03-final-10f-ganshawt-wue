@@ -26,3 +26,6 @@ Fixed issue where non-valid inputs would be accepted
 Fixed part of one desync issue
 Issues still persist with desync & with questions occasionally not printing correctly
 Unsure on desync, questions printing incorrectly seems to be an issue with the way questions are recieved by the client
+
+## 2025-01-12 Continuous bug fixes
+Fixed issue of final score interfering with printing leaderboard
