@@ -89,7 +89,6 @@ void game(int server_socket) {
       exit(0);
     }
     buffer[bytes_read] = '\0';
-    printf("%s\n", buffer);
     if (strncmp(buffer, "RESULT:CORRECT", 14) == 0) {
       printf("Correct!\n\n");
     }  else if  (strncmp(buffer, "RESULT:WRONG:", 12) == 0)  {
@@ -98,14 +97,37 @@ void game(int server_socket) {
       printf("Wrong! Correct answer was %d\n\n", correct_ans);
     }
   }
+  
   bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
   if (bytes_read > 0) {
     buffer[bytes_read] = '\0';
-    if (strncmp(buffer, "FINALSCORE:", 11) == 0) {
-      printf("Your final score: %s/10\n", buffer + 11);
+    if (strstr(buffer, "Your final score was"))  {
+    	printf("%s", buffer);
     }
-  }
+    
+    if (strstr(buffer, "LEADERBOARD"))  {
+      char *line_start = strstr(buffer, "LEADERBOARD");
+      printf("\n=== FINAL LEADERBOARD ===\n");
+      line_start = strchr(line_start, '\n');
+      if (line_start) line_start++;
+       while (line_start && *line_start) {
+         char *line_end = strchr(line_start, '\n');
+         if (!line_end) break;
+         *line_end = '\0';
+         if (strcmp(line_start, "END") == 0) {
+           printf("\n");
+           return;
+         }
+         printf("%s\n", line_start);
+         line_start = line_end + 1;
+       }
+       return;
+     }
+   }
+
+  
   printf("Waiting for all players to finish...\n");
+  
   while (1) {
     bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
     if (bytes_read <= 0) {

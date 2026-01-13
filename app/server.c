@@ -223,8 +223,10 @@ int main(int argc, char *argv[]) {
     }
     snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "END\n");
     for (int i = 0; i < 4; i++) {
+      printf("THIS IS THE THINGY FOR %d", i);
       write(client_sockets[i], leaderboard, strlen(leaderboard));
     }
+    sleep(3);
     for (int i = 0; i < 4; i++) {
       close(client_sockets[i]);
     }
