@@ -16,7 +16,7 @@ void sigint_handler(int sig) {
 }
 
 void send_client(int socket, const char *msg) {
-  printf("%s\n", msg);
+  //printf("%s\n", msg);
   int written_bytes = write(socket, msg, strlen(msg));
   //printf("%d, %d\n",socket,written_bytes);
 }
@@ -60,7 +60,7 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     int correct_pos = questioncreation(rand_dexnum, rand_qtype, answers);
     char question[256];
     snprintf(question, sizeof(question), "Question %d/10: What is %s's %s?", round, pkmn_name, qtypes[rand_qtype]);
-    printf("question: %s\n",question);
+    printf("%s\n Answer: %d\n",question,correct_pos + 1);
     send_question(client_socket, question, answers);
     int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
 
