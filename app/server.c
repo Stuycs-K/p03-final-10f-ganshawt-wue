@@ -14,9 +14,7 @@ void sigint_handler(int sig) {
 }
 
 void send_client(int socket, const char *msg) {
-  //printf("%s\n", msg);
-  int written_bytes = write(socket, msg, strlen(msg));
-  //printf("%d, %d\n",socket,written_bytes);
+  write(socket, msg, strlen(msg));
 }
 
 void send_question(int client_socket, const char *question, char **answers) {
@@ -55,7 +53,7 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     int correct_pos = questioncreation(rand_dexnum, rand_qtype, answers);
     char question[256];
     snprintf(question, sizeof(question), "Question %d/10: What is %s's %s?", round, pkmn_name, qtypes[rand_qtype]);
-    printf("%s\n Answer: %d\n",question,correct_pos + 1);
+    printf("question: %s\n",question);
     send_question(client_socket, question, answers);
     int bytes_read = read(client_socket, buffer, sizeof(buffer) - 1);
 
@@ -81,7 +79,7 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     	send_client(client_socket, buffer);
     }
 
-    //printf("score: %d\n", score);
+    printf("score: %d\n", score);
     for (int i = 0; i < 4; i++)  {
       //printf("freeing answers\n");
     //  printf("INVALID: %s\n", answers[i]);
@@ -89,8 +87,8 @@ int subserver_logic(int client_socket, int client_id, char *username) {
     }
   //  free(answers);
   }
-  // snprintf(buffer, sizeof(buffer), "Your final score was %d\n", score);
-  // send_client(client_socket, buffer);
+  snprintf(buffer, sizeof(buffer), "Your final score was %d\n", score);
+  send_client(client_socket, buffer);
   return score;
 }
 
@@ -158,7 +156,6 @@ int main(int argc, char *argv[]) {
       	strncpy(players[i].username, usernames[i], sizeof(players[i].username) - 1);
       }
       printf("Player %d username: %s\n", i + 1, players[i].username);
-      printf("%d\n", client_sockets[i]);
     }
     char start_msg[] = "START";
     for (int i = 0; i < 4; i++) {
@@ -229,7 +226,6 @@ int main(int argc, char *argv[]) {
       printf("THIS IS THE THINGY FOR %d", i);
       write(client_sockets[i], leaderboard, strlen(leaderboard));
     }
-    sleep(3);
     for (int i = 0; i < 4; i++) {
       close(client_sockets[i]);
     }
