@@ -11,8 +11,32 @@ A multiplayer trivia game. Clients can either join a lobby or make a lobby. Then
   
 ### Instructions:
 
-How does the user install/compile/run the program. (CHANGE THIS!!!!!)
-How does the user interact with this program? (CHANGE THIS!!!!!)
+Install Guide:
+
+Requirements:
+  - Make installed
+
+Clone repo:
+
+  ``` git clone git@github.com:Stuycs-K/p03-final-10f-ganshawt-wue.git```
+
+
+
+Launch Codes:
+
+CD into Repo App Folder:
+
+  ``` cd p03-final-10f-ganshawt-wue/app```
+
+Run Server:
+
+  ``` make client && make server && ./server ```
+
+Run Clients:
+
+  ``` ./client ```
+
+Once all clients are connected, the game will automatically start.
 
 ### Resources/ References:
 
