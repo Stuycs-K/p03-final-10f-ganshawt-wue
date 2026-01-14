@@ -33,3 +33,8 @@ Fixed issue of final score interfering with printing leaderboard
 ## 2025-01-13 - Final styling
 Fixing styling to make game play smoother, removing temp print statements used for debugging.
 Consolidating branches to have all functions working correctly.
+
+## 2025-01-14 - Fixing last minor issues
+Merging all branches together, continued.
+Fixing minor issues due to inconsistencies.
+Removing further debug print statements.
