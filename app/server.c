@@ -1,8 +1,6 @@
 #include "networking.h"
 #include "questioncreation.h"
 
-
-
 typedef struct {
   int client_id;
   int score;
@@ -33,10 +31,7 @@ void send_question(int client_socket, const char *question, char **answers) {
 }
 
 int subserver_logic(int client_socket, int client_id, char *username) {
-
   char * qtypes[12] = {"name", "gen", "height (dm)", "weight (hg)", "type", "hp", "attack", "defense", "special attack", "special defense", "speed", "base experience"};
-
-
   char buffer[BUFFER_SIZE];
   int score = 0;
   snprintf(buffer, sizeof(buffer), "USERNAME:%s\n", username);
@@ -231,8 +226,10 @@ int main(int argc, char *argv[]) {
     }
     snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "END\n");
     for (int i = 0; i < 4; i++) {
+      printf("THIS IS THE THINGY FOR %d", i);
       write(client_sockets[i], leaderboard, strlen(leaderboard));
     }
+    sleep(3);
     for (int i = 0; i < 4; i++) {
       close(client_sockets[i]);
     }

@@ -42,7 +42,6 @@ void receive_question(int server_socket, char *question, char answers[4][50]) {
       printf("Server disconnected\n");
       exit(0);
     }
-
    buffer[bytes_read] = '\0';
     char *line_start = buffer;
     char *line_end;
@@ -58,8 +57,7 @@ void receive_question(int server_socket, char *question, char answers[4][50]) {
       }
       line_start = line_end + 1;
     }
-   }
-   //printf("----------------------\n");
+  }
 }
 
 void game(int server_socket) {
@@ -121,14 +119,8 @@ void game(int server_socket) {
       printf("Wrong! Correct answer was %d\n\n", correct_ans);
     }
   }
-  // bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
-  // if (bytes_read > 0) {
-  //   buffer[bytes_read] = '\0';
-  //   if (strncmp(buffer, "FINALSCORE:", 11) == 0) {
-  //     printf("Your final score: %s/10\n", buffer + 11);
-  //   }
-  //}
   printf("Waiting for all players to finish...\n");
+
   while (1) {
     bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
     if (bytes_read <= 0) {
