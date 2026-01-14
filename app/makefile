@@ -22,4 +22,4 @@ networking.o: networking.c networking.h
 	gcc -c networking.c
 
 clean:
-	rm -f *.o server client qc_program .server_ip
+	rm -f *.o server client qc_program .server_ip .score
