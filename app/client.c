@@ -92,6 +92,7 @@ void game(int server_socket) {
         close(server_socket);
         exit(0);
       }
+    }
 
     buffer[strcspn(buffer, "\n")] = '\0';
     write(server_socket, buffer, strlen(buffer));
@@ -101,10 +102,6 @@ void game(int server_socket) {
       exit(0);
     }
     buffer[bytes_read] = '\0';
-<<<<<<< HEAD
-    //printf("%s\n", buffer);
-=======
->>>>>>> 7440822115250f78de24d4611ecaa0802f84cce2
 
     printf("\x001B[0;0H");
     printf("\x001B[2J");
@@ -116,40 +113,8 @@ void game(int server_socket) {
       printf("Wrong! Correct answer was %d\n\n", correct_ans);
     }
   }
-<<<<<<< HEAD
-=======
 
-  bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
-  if (bytes_read > 0) {
-    buffer[bytes_read] = '\0';
-    if (strstr(buffer, "Your final score was"))  {
-    	printf("%s", buffer);
-    }
 
-    if (strstr(buffer, "LEADERBOARD"))  {
-      char *line_start = strstr(buffer, "LEADERBOARD");
-      printf("\x001B[0;0H");
-      printf("\x001B[2J");
-      printf("\n=== FINAL LEADERBOARD ===\n");
-      line_start = strchr(line_start, '\n');
-      if (line_start) line_start++;
-       while (line_start && *line_start) {
-         char *line_end = strchr(line_start, '\n');
-         if (!line_end) break;
-         *line_end = '\0';
-         if (strcmp(line_start, "END") == 0) {
-           printf("\n");
-           return;
-         }
-         printf("%s\n", line_start);
-         line_start = line_end + 1;
-       }
-       return;
-     }
-   }
-}
-
->>>>>>> 7440822115250f78de24d4611ecaa0802f84cce2
   printf("Waiting for all players to finish...\n");
 
   while (1) {

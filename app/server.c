@@ -222,10 +222,10 @@ int main(int argc, char *argv[]) {
       offset += snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "%d. %s: %d/10\n", i + 1, players[i].username, players[i].score);
     }
     snprintf(leaderboard + offset, sizeof(leaderboard) - offset, "END\n");
-    for (int i = 0; i < 4; i++) {
-      printf("THIS IS THE THINGY FOR %d", i);
-      write(client_sockets[i], leaderboard, strlen(leaderboard));
-    }
+    // for (int i = 0; i < 4; i++) {
+    //   printf("THIS IS THE THINGY FOR %d", i);
+    //   write(client_sockets[i], leaderboard, strlen(leaderboard));
+    // }
     for (int i = 0; i < 4; i++) {
       close(client_sockets[i]);
     }
