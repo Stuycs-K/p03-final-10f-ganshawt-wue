@@ -9,3 +9,5 @@ This document must be updated daily every time you finish a work session.
 ### 2025-01-08 - Had time only to fix some bugs. 
 ### 2025-01-12 - Decided to use the nuclear option AKA just writing buffer checks and using sleep in order to allow Leaderboards and final scores send correctly.
 ### 2025-01-14 - Changed to remove .score files
+### 2025-01-15 - Made script
+### 2025-01-15 - Made video
