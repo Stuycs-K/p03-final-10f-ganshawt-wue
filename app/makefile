@@ -6,6 +6,8 @@ qc_run: qc_program
 
 compile: server client
 
+run: server compile
+
 server: server.o networking.o questioncreation.o
 	gcc -o server server.o networking.o questioncreation.o
 
