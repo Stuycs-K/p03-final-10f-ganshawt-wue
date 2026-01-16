@@ -4,6 +4,8 @@ qc_program
 server
 client
 *.score*
+.server*
+
 
 # Prerequisites
 *.d

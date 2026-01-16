@@ -27,17 +27,15 @@ void lobby(int server_socket){
       printf("\nGame starting!\n");
       break;
     }
-  //  printf("\r%s", buffer);
+    printf("\r%s", buffer);
     fflush(stdout);
   }
 }
 
 void receive_question(int server_socket, char *question, char answers[4][50]) {
-  //printf("----------------------\n");
   char buffer[BUFFER_SIZE];
   while (1) {
     int bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
-    //printf("%s\n", buffer);
     if (bytes_read <= 0) {
       printf("Server disconnected\n");
       exit(0);
@@ -74,11 +72,11 @@ void game(int server_socket) {
     char question[256];
     char answers[4][50];
     receive_question(server_socket, question, answers);
-
     printf("%s\n", question);
     for (int i = 0; i < 4; i++) {
       printf("%d. %s\n", i + 1, answers[i]);
     }
+
     printf("Your answer (1-4): ");
     sleep(0.5);
     char * temp = fgets(buffer, sizeof(buffer), stdin);
@@ -95,10 +93,7 @@ void game(int server_socket) {
         exit(0);
       }
     }
-    // if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-    //   close(server_socket);
-    //   exit(0);
-    // }
+
     buffer[strcspn(buffer, "\n")] = '\0';
     write(server_socket, buffer, strlen(buffer));
     bytes_read = read(server_socket, buffer, sizeof(buffer) - 1);
@@ -107,7 +102,6 @@ void game(int server_socket) {
       exit(0);
     }
     buffer[bytes_read] = '\0';
-    //printf("%s\n", buffer);
 
     printf("\x001B[0;0H");
     printf("\x001B[2J");
@@ -119,6 +113,8 @@ void game(int server_socket) {
       printf("Wrong! Correct answer was %d\n\n", correct_ans);
     }
   }
+
+
   printf("Waiting for all players to finish...\n");
 
   while (1) {
@@ -133,8 +129,6 @@ void game(int server_socket) {
     while ((line_end = strchr(line_start, '\n')) != NULL) {
       *line_end = '\0';
       if (strcmp(line_start, "LEADERBOARD") == 0) {
-        printf("\x001B[0;0H");
-        printf("\x001B[2J");
         printf("\n=== FINAL LEADERBOARD ===\n");
         in_leaderboard = 1;
       }  else if  (strcmp(line_start, "END") == 0)  {

@@ -27,5 +27,14 @@ Fixed part of one desync issue
 Issues still persist with desync & with questions occasionally not printing correctly
 Unsure on desync, questions printing incorrectly seems to be an issue with the way questions are recieved by the client
 
-## 2025-01-12 Continuous bug fixes
+## 2025-01-12 - Continuous bug fixes
 Fixed issue of final score interfering with printing leaderboard
+
+## 2025-01-13 - Final styling
+Fixing styling to make game play smoother, removing temp print statements used for debugging.
+Consolidating branches to have all functions working correctly.
+
+## 2025-01-14 - Fixing last minor issues
+Merging all branches together, continued.
+Fixing minor issues due to inconsistencies.
+Removing further debug print statements.
